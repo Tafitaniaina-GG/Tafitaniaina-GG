@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès sécurisé à menu.html</title>
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('fondcode.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Style du conteneur principal */
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            width: 100%;
+        }
+
+        /* Styles des éléments de formulaire */
+        input[type="password"] {
+            padding: 10px;
+            width: 80%;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3b5998;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2d4373;
+        }
+
+        /* Style des messages d'erreur */
+        .error {
+            color: #ff4c4c;
+            margin-top: 20px;
+        }
+
+        /* Style du lien Facebook */
+        #facebook {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function verifierCode() {
+            const code = document.getElementById('code').value;  // Récupère le code saisi
+            const messageErreur = document.getElementById('erreur');  // Message d'erreur
+
+            if (code === '120612003') {
+                // Si le code est correct, redirige vers menu.html
+                window.location.href = 'menu.html';
+            } else {
+                // Affiche un message d'erreur si le code est incorrect
+                messageErreur.textContent = 'Mot de passe incorrect. Veuillez faire un abonnement pour accéder à la page.';
+                document.getElementById('facebook').style.display = 'block'; // Affiche l'instruction
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Entrez le code pour accéder à la page suivante</h2>
+        <input type="password" id="code" placeholder="Entrez votre code" required>
+        <br>
+        <button onclick="verifierCode()">Envoyer</button>
+        <p id="erreur" class="error"></p>
+        <div id="facebook">
+            <p>Pour plus d'informations, visitez notre <a href="https://www.facebook.com/votreprofil" target="_blank" style="color: #3b5998;">profil Facebook</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
